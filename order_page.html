@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Now - Home_Foods_13</title>
+    <style>
+        body {
+            background-image: url('https://i.postimg.cc/J4Bx1HF7/DALL-E-2025-02-20-06-20-47-A-dark-and-elegant-food-photography-background-featuring-traditional-Te.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(34, 34, 34, 0.8);
+            border-radius: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background: #ff4500;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e03e00;
+        }
+
+        .items {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .category {
+            background: #555;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .category-options {
+            display: none;
+            margin-left: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+
+        .discount {
+            color: #ffcc00;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        const prices = {
+            "Murukulu": 400,
+            "Appalu": 400,
+            "Sarvapindi": 400,
+            "Pappu Chekkalu": 400,
+            "Sakinalu": 400,
+            "Gulab Jamun": 400,
+            "Boondi Laddu": 400,
+            "Sunnundalu": 400,
+            "Nuvvula Laddu": 400,
+            "Bobbatlu": 400,
+            "Garjelu": 400,  <!-- Added Garjelu to prices -->
+            "Avakaya Pickle": 600,
+            "Allam Pickle": 600,
+            "Lemon Pickle": 600,
+            "Amla Pickle": 600,
+            "Idly Batter": 130,
+            "Dosa Batter": 130,
+            "Pulihora Powder": 150,
+            "Pure Ghee": 700,
+        };
+
+        function updateTotal() {
+            let total = 0;
+            const selectedItems = document.querySelectorAll('input[name="quantity"]');
+            selectedItems.forEach(item => {
+                const quantity = parseInt(item.value) || 0; // Ensure quantity is a number
+                if (quantity > 0) {
+                    total += prices[item.id] * quantity; // Multiply price by quantity
+                }
+            });
+
+            // Calculate 10% discount
+            const discount = total * 0.10;
+            const totalWithDiscount = total - discount;
+
+            // Update UI with the new total and discount
+            document.getElementById("total").innerText = "Total: ₹" + totalWithDiscount.toFixed(2);
+            document.getElementById("total-amount").value = totalWithDiscount.toFixed(2);
+            document.getElementById("discount").innerText = "Discount (10%): ₹" + discount.toFixed(2);
+        }
+
+        function toggleCategory(id) {
+            let element = document.getElementById(id);
+            element.style.display = (element.style.display === "none" || element.style.display === "") ? "block" : "none";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Place Your Order</h2>
+        <form action="https://formspree.io/f/xjkgjapd" method="POST">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label>Select Items</label>
+            <div class="items">
+                <div class="category" onclick="toggleCategory('snacks')">Snacks</div>
+                <div id="snacks" class="category-options">
+                    <label for="Murukulu">Murukulu - ₹400 (1kg)</label>
+                    <input type="number" id="Murukulu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Appalu">Appalu - ₹400 (1kg)</label>
+                    <input type="number" id="Appalu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Sarvapindi">Sarvapindi - ₹400 (1kg)</label>
+                    <input type="number" id="Sarvapindi" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Pappu Chekkalu">Pappu Chekkalu - ₹400 (1kg)</label>
+                    <input type="number" id="Pappu Chekkalu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Sakinalu">Sakinalu - ₹400 (1kg)</label>
+                    <input type="number" id="Sakinalu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+                </div>
+
+                <div class="category" onclick="toggleCategory('pickles')">Pickles</div>
+                <div id="pickles" class="category-options">
+                    <label for="Avakaya Pickle">Avakaya Pickle - ₹600 (1kg)</label>
+                    <input type="number" id="Avakaya Pickle" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Allam Pickle">Allam Pickle - ₹600 (1kg)</label>
+                    <input type="number" id="Allam Pickle" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Lemon Pickle">Lemon Pickle - ₹600 (1kg)</label>
+                    <input type="number" id="Lemon Pickle" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Amla Pickle">Amla Pickle - ₹600 (1kg)</label>
+                    <input type="number" id="Amla Pickle" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+                </div>
+
+                <div class="category" onclick="toggleCategory('batters')">Batter & Powder</div>
+                <div id="batters" class="category-options">
+                    <label for="Idly Batter">Idly Batter - ₹130 (500g)</label>
+                    <input type="number" id="Idly Batter" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Dosa Batter">Dosa Batter - ₹130 (500g)</label>
+                    <input type="number" id="Dosa Batter" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Pulihora Powder">Pulihora Powder - ₹150</label>
+                    <input type="number" id="Pulihora Powder" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+                </div>
+
+                <!-- New Sweets Category with 1kg -->
+                <div class="category" onclick="toggleCategory('sweets')">Sweets</div>
+                <div id="sweets" class="category-options">
+                    <label for="Gulab Jamun">Gulab Jamun - ₹400 (1kg)</label>
+                    <input type="number" id="Gulab Jamun" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Boondi Laddu">Boondi Laddu - ₹400 (1kg)</label>
+                    <input type="number" id="Boondi Laddu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Sunnundalu">Sunnundalu - ₹400 (1kg)</label>
+                    <input type="number" id="Sunnundalu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Nuvvula Laddu">Nuvvula Laddu - ₹400 (1kg)</label>
+                    <input type="number" id="Nuvvula Laddu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Bobbatlu">Bobbatlu - ₹400 (1kg)</label>
+                    <input type="number" id="Bobbatlu" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+
+                    <label for="Garjelu">Garjelu - ₹400 (1kg)</label>
+                    <input type="number" id="Garjelu" name="quantity" min="0" value="0" onclick="updateTotal()"><br> <!-- Added Garjelu -->
+                </div>
+
+                <!-- New Ghee Category -->
+                <div class="category" onclick="toggleCategory('ghee')">Pure Ghee</div>
+                <div id="ghee" class="category-options">
+                    <label for="Pure Ghee">Pure Ghee - ₹700 (1kg)</label>
+                    <input type="number" id="Pure Ghee" name="quantity" min="0" value="0" onclick="updateTotal()"><br>
+                </div>
+
+            </div>
+            <label for="address">Delivery Address</label>
+            <input type="text" id="address" name="address" placeholder="Enter your address" required>
+            <input type="hidden" id="total-amount" name="total-amount">
+            <p id="total" class="price">Total: ₹0</p>
+            <p id="discount" class="discount">Discount (10%): ₹0</p> <!-- Display Discount -->
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+</body>
+</html>
