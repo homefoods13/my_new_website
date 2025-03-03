@@ -1,44 +1,57 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Foods</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            background: url('food-pattern.png') repeat, black;
-            background-size: contain;
+            background: url('https://i.postimg.cc/XY5jccz6/DALL-E-2025-02-20-06-20-47-A-dark-and-elegant-food-photography-background-featuring-traditional-Te.webp') no-repeat center center fixed;
+            background-size: cover;
             color: white;
             font-family: 'Poppins', sans-serif;
             text-align: center;
+            margin: 0;
         }
+
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
         }
+
         .title {
             font-size: 36px;
             font-weight: bold;
             font-family: 'Great Vibes', cursive;
         }
+
         .logo img {
             width: 200px;
         }
+
         .contact {
             text-align: right;
         }
+
         .offer {
             font-size: 18px;
             color: #ffcc00;
             margin-top: 10px;
         }
+
         .about, .products, .reviews, .contact-section {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background: rgba(34, 34, 34, 0.9);
+            background: rgba(34, 34, 34, 0.7);
             border-radius: 10px;
         }
+
         .order-button {
             background: #ff4500;
             color: white;
@@ -49,33 +62,26 @@
             cursor: pointer;
             margin-top: 20px;
         }
+
         .scroll-menu {
             max-height: 200px;
             overflow-y: auto;
             padding: 10px;
-            background: rgba(44, 44, 44, 0.9);
+            background: rgba(44, 44, 44, 0.7);
             border-radius: 10px;
         }
+
         .toggle-content {
             display: none;
         }
+
     </style>
-    <script>
-        function toggleMenu(id) {
-            var content = document.getElementById(id);
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-            } else {
-                content.style.display = "none";
-            }
-        }
-    </script>
 </head>
 <body>
     <div class="header">
         <div class="title">Home Foods 🍽️</div>
         <div class="logo"><img src="Brown Simple Cute Catering Logo.png" alt="Home Foods Logo"></div>
-        <div class="contact">📞 8328273480 | 📷 @Home_Foods_13</div>
+        <div class="contact">📞 8328173480 | 📷 @Home_Foods_13</div>
     </div>
     
     <div class="offer">🎉 Free delivery up to 10km & 10% off on your bill! 🎉</div>
@@ -110,14 +116,25 @@
         <p>⭐⭐⭐⭐⭐ "Amazing homemade food! 🍽️"</p>
         <p>⭐⭐⭐⭐⭐ "Tastes just like home! 🏡"</p>
     </div>
-    
+
     <button class="order-button" onclick="window.location.href='./order_page.html'">🛒 Order Now</button>
     
     <div class="contact-section">
         <h3>Contact Us 📩</h3>
-        <p>📞 Phone: 8328273480</p>
+        <p>📞 Phone: 8328173480</p>
         <p>📧 Email: homefoods1305@gmail.com</p>
         <p>📍 Location: Hyderabad, India</p>
     </div>
+
+    <script>
+        function toggleMenu(menuId) {
+            const menu = document.getElementById(menuId);
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
