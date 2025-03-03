@@ -9,12 +9,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
         body {
-            /* Removed the background image */
             background-color: #2c2c2c; /* Optional: Add a background color */
             color: white;
             font-family: 'Poppins', sans-serif;
             text-align: center;
             margin: 0;
+            padding: 0;
         }
 
         .header {
@@ -22,6 +22,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
+            flex-wrap: wrap;
         }
 
         .title {
@@ -31,11 +32,13 @@
         }
 
         .logo img {
-            width: 200px;
+            width: 150px;
+            max-width: 100%;
         }
 
         .contact {
             text-align: right;
+            font-size: 14px;
         }
 
         .offer {
@@ -73,6 +76,75 @@
 
         .toggle-content {
             display: none;
+        }
+
+        /* Mobile View */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .title {
+                font-size: 28px;
+            }
+
+            .logo img {
+                width: 120px;
+            }
+
+            .contact {
+                text-align: center;
+                font-size: 12px;
+                margin-top: 10px;
+            }
+
+            .offer {
+                font-size: 16px;
+            }
+
+            .about, .products, .reviews, .contact-section {
+                padding: 15px;
+                margin: 15px;
+            }
+
+            .order-button {
+                padding: 12px 25px;
+                font-size: 18px;
+            }
+
+            .scroll-menu {
+                max-height: 180px;
+            }
+        }
+
+        /* Very small devices (phones in portrait mode) */
+        @media (max-width: 480px) {
+            .title {
+                font-size: 24px;
+            }
+
+            .offer {
+                font-size: 14px;
+            }
+
+            .order-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .scroll-menu {
+                max-height: 160px;
+            }
+
+            .about, .products, .reviews, .contact-section {
+                margin: 10px;
+            }
+
+            .contact {
+                font-size: 10px;
+            }
         }
 
     </style>
